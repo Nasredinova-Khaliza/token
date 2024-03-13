@@ -1,0 +1,48 @@
+.Home {
+	padding: 30px;
+}
+
+.inputContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 15px;
+	margin-top: 15px;
+
+	button {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		width: 100px;
+		border-color: blue;
+		padding: 10px;
+		border-radius: 8px;
+		border: 1px solid transparent;
+	}
+}
+
+.card {
+	width: 300px;
+	height: 300px;
+	margin: 10px;
+	padding: 10px;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	background-color: white;
+	color: black;
+	margin-top: 50px;
+}
+
+.inputContainer input {
+	width: 500px;
+	height: 40px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+.inputContainer input:focus {
+	outline: none;
+	border-color: blue;
+}
