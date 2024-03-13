@@ -51,7 +51,7 @@ const LoginForm: React.FC = () => {
 				onChange={handleGetPassword}
 				width="300px"
 			/>
-			<Link to="/registration">Нет аккаунта зарегистируйтесь</Link>
+			<Link to="/register">Нет аккаунта зарегистируйтесь</Link>
 			<div>
 				<Button {...loginButtonProps}>Войти</Button>
 			</div>
