@@ -20,7 +20,6 @@ export const productstApi = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: import.meta.env.VITE_REQUEST_URL,
 		prepareHeaders: (headers) => {
-			// You can dynamically set authorization headers here
 			const token = localStorage.getItem("token");
 			if (token) {
 				headers.set("Authorization", `Bearer ${token}`);
