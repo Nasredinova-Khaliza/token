@@ -1,19 +1,19 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// interface Product {
-// 	id: number;
-// 	productName: string;
-// 	photoUrl: string;
-// 	price: number;
-// 	quantity: number;
-// }
-interface Product {
+interface Product1 {
 	id: number;
+	productName: string;
+	photoUrl: string;
+	price: number;
+	quantity: number;
+}
+interface Product {
 	productName: string;
 	quantity: number;
 	price: number;
 	photoUrl: string;
 }
+[];
 
 export const productstApi = createApi({
 	reducerPath: "productApi",
@@ -32,7 +32,7 @@ export const productstApi = createApi({
 		getProducts: builder.query<Product[], void>({
 			query: () => "products",
 		}),
-		postProduct: builder.mutation<Product, Product>({
+		postProduct: builder.mutation<Product1, Product>({
 			query: (newData) => ({
 				url: "products",
 				method: "POST",

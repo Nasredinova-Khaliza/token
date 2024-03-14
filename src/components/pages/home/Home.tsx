@@ -9,13 +9,12 @@ import scss from "./Home.module.scss";
 
 interface HomeProps {}
 
-interface Product {
-	id: number;
-	productName: string;
-	quantity: number;
-	price: number;
-	photoUrl: string;
-}
+// interface Product {
+// 	productName: string;
+// 	quantity: number;
+// 	price: number;
+// 	photoUrl: string;
+// }
 
 const Home: React.FC<HomeProps> = () => {
 	const navigate = useNavigate();
@@ -41,8 +40,7 @@ const Home: React.FC<HomeProps> = () => {
 
 	const handlePost = async () => {
 		try {
-			const newData: Product = {
-				id: Math.random(),
+			const newData = {
 				productName,
 				quantity,
 				price,
@@ -102,8 +100,8 @@ const Home: React.FC<HomeProps> = () => {
 			</div>
 
 			<div className={scss.cards}>
-				{products.map((item) => (
-					<div key={item.id} className={scss.card}>
+				{products.map((item, index) => (
+					<div key={index} className={scss.card}>
 						<h1> name: {item.productName}</h1>
 						<img src={item.photoUrl} alt="" />
 						<p>price: {item.price}</p>
