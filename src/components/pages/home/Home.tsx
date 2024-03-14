@@ -9,6 +9,14 @@ import scss from "./Home.module.scss";
 
 interface HomeProps {}
 
+interface Product {
+	id: number;
+	productName: string;
+	quantity: number;
+	price: number;
+	photoUrl: string;
+}
+
 const Home: React.FC<HomeProps> = () => {
 	const navigate = useNavigate();
 	const [productName, setProductName] = useState("");
@@ -33,7 +41,8 @@ const Home: React.FC<HomeProps> = () => {
 
 	const handlePost = async () => {
 		try {
-			const newData = {
+			const newData: Product = {
+				id: Math.random(),
 				productName,
 				quantity,
 				price,
@@ -44,12 +53,19 @@ const Home: React.FC<HomeProps> = () => {
 		} catch (error) {
 			console.error("Error while posting product:", error);
 		}
+		setProductName("");
+		setPhotoUrl("");
+		setPrice(0);
+		setQuantity(0);
 	};
 
 	return (
 		<div className={scss.Home}>
-			<button onClick={logout}>Log Out</button>
+			<button onClick={logout} className={scss.logOut}>
+				Log Out
+			</button>
 			<div className={scss.inputContainer}>
+				<h1>Products</h1>
 				<input
 					type="text"
 					placeholder="Product Name"
@@ -70,7 +86,7 @@ const Home: React.FC<HomeProps> = () => {
 					type="number"
 					placeholder="Price"
 					value={price}
-					onChange={(e) => setPrice(Number(e.target.value))}
+					onChange={(e) => setPrice(+e.target.value)}
 				/>
 			</div>
 			<div className={scss.inputContainer}>
@@ -78,19 +94,23 @@ const Home: React.FC<HomeProps> = () => {
 					type="number"
 					placeholder="Quantity"
 					value={quantity}
-					onChange={(e) => setQuantity(Number(e.target.value))}
+					onChange={(e) => setQuantity(+e.target.value)}
 				/>
-				<button onClick={handlePost}>Add</button>
+				<button onClick={handlePost} className={scss.addButton}>
+					Add
+				</button>
 			</div>
 
-			{products.map((item) => (
-				<div key={item.id} className={scss.card}>
-					<h1>{item.productName}</h1>
-					<img src={item.photoUrl} alt="" />
-					<p>{item.price}</p>
-					<p>{item.quantity}</p>
-				</div>
-			))}
+			<div className={scss.cards}>
+				{products.map((item) => (
+					<div key={item.id} className={scss.card}>
+						<h1> name: {item.productName}</h1>
+						<img src={item.photoUrl} alt="" />
+						<p>price: {item.price}</p>
+						<p> quantity: {item.quantity}</p>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };

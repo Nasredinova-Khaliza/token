@@ -3,6 +3,7 @@ import Input from "../../customInput/CustomInput";
 import Button, { ButtonProps } from "../../customButton/CustomButton";
 import { Link, useNavigate } from "react-router-dom";
 import { useCreateUserMutation } from "../../../redux/api/usersApi";
+import scss from "./RegisterForm.module.scss";
 const RegisterForm: React.FC = () => {
 	const navigate = useNavigate();
 	const [createUser] = useCreateUserMutation();
@@ -38,37 +39,38 @@ const RegisterForm: React.FC = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<h3>Вход</h3>
-			<Input
-				type="email"
-				label="Email"
-				placeholder="Введите email"
-				value={email}
-				onChange={handleGetEmail}
-				width="300px"
-			/>
-			<Input
-				type="password"
-				label="Password"
-				placeholder="Введите password"
-				value={password}
-				onChange={handleGetPassword}
-				width="300px"
-			/>
-			<Input
-				type="text"
-				label="name"
-				placeholder="Введите name"
-				value={userName}
-				onChange={handleGetUserName}
-				width="300px"
-			/>
-			<div>
-				<Link to="/login">Есть аккаунт</Link>
-				<Button {...loginButtonProps}>Registration</Button>
-			</div>
-		</form>
+		<div className={scss.RegisterFormPage}>
+			<form onSubmit={handleSubmit} className={scss.card}>
+				<h3>Вход</h3>
+				<div className={scss.registerInputs}>
+					<Input
+						type="email"
+						placeholder="Введите email"
+						value={email}
+						onChange={handleGetEmail}
+						width="300px"
+					/>
+					<Input
+						type="password"
+						placeholder="Введите password"
+						value={password}
+						onChange={handleGetPassword}
+						width="300px"
+					/>
+					<Input
+						type="text"
+						placeholder="Введите name"
+						value={userName}
+						onChange={handleGetUserName}
+						width="300px"
+					/>
+					<Link to="/login" className={scss.link}>
+						Есть аккаунт
+					</Link>
+					<Button {...loginButtonProps}>Registration</Button>
+				</div>
+			</form>
+		</div>
 	);
 };
 export default RegisterForm;
